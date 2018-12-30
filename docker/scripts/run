@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+set -o nounset \
+    -o errexit \
+    -o verbose \
+    -o xtrace
+
+echo "===> ENV Variables ..."
+env | sort
+
+echo "===> User"
+id
+
+echo "===> Configuring ..."
+/usr/lib/zookeeper/docker/bin/configure
+
+echo "===> Running preflight checks ... "
+/usr/lib/zookeeper/docker/bin/ensure
+
+echo "===> Launching ... "
+exec /usr/lib/zookeeper/docker/bin/launch

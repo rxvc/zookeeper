@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -o nounset \
+    -o errexit \
+    -o verbose \
+    -o xtrace
+
+
+echo "===> Check if /var/lib/zookeeper/data is writable ..."
+dconsole path /var/lib/zookeeper/data writable
+
+echo "===> Check if /var/lib/zookeeper/log is writable ..."
+dconsole path /var/lib/zookeeper/log writable
